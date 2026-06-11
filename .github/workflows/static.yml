@@ -13,6 +13,7 @@ permissions:
 
 # Forzamos a GitHub Actions a usar Node 24 para evitar los avisos de desactualización (Junio 2026)
 env:
+  FORCE_JUST_JAVASCRIPT_ACTIONS_TO_NODE24: true
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
@@ -36,14 +37,12 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
+        # Al no poner versión aquí, detecta y usa directamente el pnpm 10 de tu package.json
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build Angular
-        # Ajustado con 'Vice_0' para la ruta base de GitHub Pages
         run: pnpm run build -- --base-href /Vice_0/
 
       - name: Setup Pages
@@ -52,8 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Apunta exactamente a la carpeta 'Vice_0' dentro de dist
-          path: './dist/Vice_0/'
+          path: './dist/Vice_0/browser'
 
       - name: Deploy to GitHub Pages
         id: deployment
