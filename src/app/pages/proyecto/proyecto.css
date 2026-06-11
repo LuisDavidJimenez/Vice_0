@@ -1,0 +1,17 @@
+.projects-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0d0c1d; /* El fondo oscuro de la paleta */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  font-family: 'NeonFuture', sans-serif;
+  font-size: 3rem;
+  color: #E0115F; /* El rosa neón de la paleta para variar */
+  text-shadow: 0 0 10px #E0115F;
+}

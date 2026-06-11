@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Esto fulmina por completo cualquier barra de scroll */
+  background-color: #0d0c1d; /* Fondo oscuro liso mientras carga */
+}
+
+@font-face {
+  font-family: 'NeonFuture';
+  /* src: url('../public/fonts/Beon-Regular.ttf') format('truetype'); */
+  src: url('../public/fonts/Neon\ Spark.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.neon {
+  font-family: 'NeonFuture', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
