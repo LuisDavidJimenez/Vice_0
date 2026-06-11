@@ -11,9 +11,7 @@ permissions:
   pages: write
   id-token: write
 
-# Forzamos a GitHub Actions a usar Node 24 para evitar los avisos de desactualización (Junio 2026)
 env:
-  FORCE_JUST_JAVASCRIPT_ACTIONS_TO_NODE24: true
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
@@ -37,13 +35,13 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        # Al no poner versión aquí, detecta y usa directamente el pnpm 10 de tu package.json
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build Angular
-        run: pnpm run build -- --base-href /Vice_0/
+        # Corregido quitando los guiones duplicados que hacían explotar a Angular
+        run: pnpm run build --base-href /Vice_0/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
