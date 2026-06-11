@@ -6,4 +6,6 @@ export const routes: Routes = [
   { path: '', component: Home },
 
   { path: 'proyecto', component: Proyecto },
+
+  { path: '**', redirectTo: '' },
 ];
