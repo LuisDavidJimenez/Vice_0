@@ -3,7 +3,7 @@ name: Deploy Angular to Pages
 
 on:
   push:
-    branches: ["main"] # Asegúrate de que tu rama principal se llame así
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -32,18 +32,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Angular 22 funciona de escándalo con Node 22 o superior
+          node-version: 22
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # Forzamos la versión estable de pnpm
+          version: 9
 
       - name: Install dependencies
         run: pnpm install
 
       - name: Build Angular
-        # ⚠️ REEMPLAZA 'vice_0' POR EL NOMBRE EXACTO DE TU REPOSITORIO EN GITHUB
+        # Ajustado con 'Vice_0' para la ruta base de GitHub Pages
         run: pnpm run build -- --base-href /Vice_0/
 
       - name: Setup Pages
@@ -52,9 +52,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ⚠️ REVISA ESTA RUTA: Entra en tu carpeta 'dist' local tras compilar.
-          # Si el proyecto se llama 'vice_0', la ruta habitual es la siguiente:
-          path: './dist/Vice_0/browser'
+          # Apunta exactamente a la carpeta 'Vice_0' dentro de dist
+          path: './dist/Vice_0/'
 
       - name: Deploy to GitHub Pages
         id: deployment
